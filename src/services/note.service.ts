@@ -10,13 +10,7 @@ export const uploadNote = async (
   const response =
     await axiosInstance.post(
       "/notes/upload",
-      formData,
-      {
-        headers: {
-          "Content-Type":
-            "multipart/form-data",
-        },
-      }
+      formData
     );
 
   return response.data;
