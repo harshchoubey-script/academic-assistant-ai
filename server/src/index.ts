@@ -32,7 +32,9 @@ app.use("/quiz", quizRoutes);
 
 app.use(errorMiddleware);
 
-const PORT = Number(process.env.PORT) || 8080;
+const PORT: number = process.env.PORT
+  ? parseInt(process.env.PORT)
+  : 8080;
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
