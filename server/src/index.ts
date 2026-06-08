@@ -36,26 +36,22 @@ app.use("/notes", noteRoutes);
 
 app.use("/summary", summaryRoutes);
 
-app.use(
-  "/flashcards",
-  flashcardRoutes
-);
+app.use("/flashcards", flashcardRoutes);
 
 app.use("/quiz", quizRoutes);
 
-// Global Error Middleware
-app.use(errorMiddleware);
-
-// Server
-const PORT =
-  process.env.PORT || 5000;
-
+// Test Route
 app.get("/test", (req, res) => {
   res.send("WORKING");
 });
 
-app.listen(PORT, () => {
-  console.log(
-    `Server running on port ${PORT}`
-  );
+// Global Error Middleware
+app.use(errorMiddleware);
+
+// Railway Dynamic Port
+const PORT = process.env.PORT || 8080;
+
+// Server
+app.listen(Number(PORT), "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
