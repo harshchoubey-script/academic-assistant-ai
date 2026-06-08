@@ -4,14 +4,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import userRoutes from "./routes/user.routes";
-import authRoutes from "./routes/auth.routes";
-import noteRoutes from "./routes/note.routes";
-import summaryRoutes from "./routes/summary.routes";
-import flashcardRoutes from "./routes/flashcard.routes";
-import quizRoutes from "./routes/quiz.routes";
+import userRoutes from "./routes/user.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import noteRoutes from "./routes/note.routes.js";
+import summaryRoutes from "./routes/summary.routes.js";
+import flashcardRoutes from "./routes/flashcard.routes.js";
+import quizRoutes from "./routes/quiz.routes.js";
 
-import { errorMiddleware } from "./middlewares/error.middleware";
+import { errorMiddleware } from "./middlewares/error.middleware.js";
 
 const app = express();
 
