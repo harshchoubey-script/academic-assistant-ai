@@ -2,16 +2,41 @@ import multer from "multer";
 
 import path from "path";
 
+import fs from "fs";
+
+// Absolute uploads path
+const uploadsPath = path.join(
+  process.cwd(),
+  "uploads"
+);
+
+// Create uploads folder automatically
+if (!fs.existsSync(uploadsPath)) {
+  fs.mkdirSync(uploadsPath, {
+    recursive: true,
+  });
+}
+
 // Storage Configuration
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
+  destination: (
+    req,
+    file,
+    cb
+  ) => {
+    cb(null, uploadsPath);
   },
 
-  filename: (req, file, cb) => {
+  filename: (
+    req,
+    file,
+    cb
+  ) => {
     const uniqueName =
       Date.now() +
-      path.extname(file.originalname);
+      path.extname(
+        file.originalname
+      );
 
     cb(null, uniqueName);
   },
