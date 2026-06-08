@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL:
+    "https://academic-assistant-ai-1.onrender.com",
   withCredentials: true,
 });
 
