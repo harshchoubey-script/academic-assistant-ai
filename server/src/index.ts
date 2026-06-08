@@ -1,55 +1,45 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 import userRoutes from "./routes/user.routes";
 import authRoutes from "./routes/auth.routes";
-
-import { errorMiddleware } from "./middlewares/error.middleware";
 import noteRoutes from "./routes/note.routes";
 import summaryRoutes from "./routes/summary.routes";
 import flashcardRoutes from "./routes/flashcard.routes";
 import quizRoutes from "./routes/quiz.routes";
 
-console.log("CORRECT INDEX RUNNING");
+import { errorMiddleware } from "./middlewares/error.middleware";
 
 const app = express();
 
-// Middlewares
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://academic-assistant-ai-36hj.vercel.app",
-      "https://academic-assistant-ai-36hj-o7idia3uu-harsh-choubey-s-projects.vercel.app",
-    ],
-    credentials: true,
+    origin: "*",
   })
 );
 
 app.use(express.json());
 
-// Routes
-app.use("/users", userRoutes);
+app.get("/", (_, res) => {
+  res.send("Backend Running");
+});
 
-app.use("/auth", authRoutes);
-
-app.use("/notes", noteRoutes);
-
-app.use("/summary", summaryRoutes);
-
-app.use("/flashcards", flashcardRoutes);
-
-app.use("/quiz", quizRoutes);
-
-// Test Route
-app.get("/test", (req, res) => {
+app.get("/test", (_, res) => {
   res.send("WORKING");
 });
 
-// Global Error Middleware
+app.use("/users", userRoutes);
+app.use("/auth", authRoutes);
+app.use("/notes", noteRoutes);
+app.use("/summary", summaryRoutes);
+app.use("/flashcards", flashcardRoutes);
+app.use("/quiz", quizRoutes);
+
 app.use(errorMiddleware);
 
-// Server
 const PORT = process.env.PORT || 8080;
 
 app.listen(Number(PORT), "0.0.0.0", () => {
