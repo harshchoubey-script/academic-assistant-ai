@@ -1,10 +1,10 @@
 import express from "express";
 
-import { createQuiz } from "../controllers/quiz.controller";
+import { createQuiz } from "../controllers/quiz.controller.js";
 
-import { getQuizByNoteId } from "../controllers/quiz.controller";
+import { getQuizByNoteId } from "../controllers/quiz.controller.js";
 
-import { authMiddleware } from "../middlewares/auth.middleware";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 

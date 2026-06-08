@@ -4,7 +4,7 @@ import {
   NextFunction,
 } from "express";
 
-import prisma from "../lib/prisma";
+import prisma from "../lib/prisma.js";
 
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -12,7 +12,7 @@ import jwt from "jsonwebtoken";
 import {
   signupSchema,
   loginSchema,
-} from "../validators/auth.validation";
+} from "../validators/auth.validation.js";
 
 export const signup = async (
   req: Request,

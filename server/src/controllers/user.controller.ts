@@ -3,7 +3,7 @@ import {
   Response,
 } from "express";
 
-import prisma from "../lib/prisma";
+import prisma from "../lib/prisma.js";
 
 export const getUsers = async (
   req: Request,

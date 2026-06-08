@@ -3,11 +3,11 @@ import {
   NextFunction,
 } from "express";
 
-import { AuthRequest } from "../middlewares/auth.middleware";
+import { AuthRequest } from "../middlewares/auth.middleware.js";
 
-import prisma from "../lib/prisma";
+import prisma from "../lib/prisma.js";
 
-import { generateSummary } from "../services/ai.service";
+import { generateSummary } from "../services/ai.service.js";
 
 export const createSummary = async (
   req: AuthRequest,

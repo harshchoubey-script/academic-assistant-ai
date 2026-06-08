@@ -3,10 +3,10 @@ import express from "express";
 import {
   createSummary,
   getSummaryByNote,
-} from "../controllers/summary.controller";
+} from "../controllers/summary.controller.js";
 
 import { authMiddleware }
-from "../middlewares/auth.middleware";
+from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 

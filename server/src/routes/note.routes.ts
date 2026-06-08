@@ -1,14 +1,14 @@
 import express from "express";
 
-import { uploadNote } from "../controllers/note.controller";
+import { uploadNote } from "../controllers/note.controller.js";
 
-import { upload } from "../middlewares/upload.middleware";
+import { upload } from "../middlewares/upload.middleware.js";
 
-import { authMiddleware } from "../middlewares/auth.middleware";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 
-import { getNotes } from "../controllers/note.controller";
+import { getNotes } from "../controllers/note.controller.js";
 
-import { getSingleNote } from "../controllers/note.controller";
+import { getSingleNote } from "../controllers/note.controller.js";
 
 console.log("NOTE ROUTES LOADED");
 

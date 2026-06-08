@@ -6,9 +6,9 @@ import {
   getUserById,
   updateUser,
   deleteUser,
-} from "../controllers/user.controller";
+} from "../controllers/user.controller.js";
 
-import { authMiddleware } from "../middlewares/auth.middleware";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
