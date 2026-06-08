@@ -15,7 +15,15 @@ import { errorMiddleware } from "./middlewares/error.middleware.js";
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://academic-assistant-ai-1.onrender.com",
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
