@@ -15,19 +15,11 @@ import { errorMiddleware } from "./middlewares/error.middleware";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
-app.get("/", (_, res) => {
-  res.send("Backend Running");
-});
-
-app.get("/test", (_, res) => {
+app.get("/test", (_req, res) => {
   res.send("WORKING");
 });
 
@@ -40,8 +32,8 @@ app.use("/quiz", quizRoutes);
 
 app.use(errorMiddleware);
 
-const PORT = process.env.PORT || 8080;
+const PORT = Number(process.env.PORT) || 8080;
 
-app.listen(Number(PORT), "0.0.0.0", () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
