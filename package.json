@@ -1,33 +1,11 @@
 {
-  "name": "academic-assistant-backend",
-  "version": "1.0.0",
+  "name": "exam",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
-  },
-  "dependencies": {
-    "@google/generative-ai": "^0.24.1",
-    "@prisma/client": "^6.19.3",
-    "bcryptjs": "^3.0.3",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "multer": "^2.1.1",
-    "openai": "^6.42.0",
-    "pdfjs-dist": "^6.0.227",
-    "zod": "^4.4.3"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/multer": "^2.1.0",
-    "@types/node": "^24.12.4",
-    "prisma": "^6.19.3",
-    "tsx": "^4.22.4",
-    "typescript": "~6.0.3"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
   }
 }
