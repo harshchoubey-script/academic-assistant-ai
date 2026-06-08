@@ -19,6 +19,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
+      "https://academic-assistant-ai-36hj.vercel.app",
       "https://academic-assistant-ai-36hj-o7idia3uu-harsh-choubey-s-projects.vercel.app",
     ],
     credentials: true,
