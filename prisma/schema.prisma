@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  notes       UploadedNote[]
+  summaries   Summary[]
+  quizzes     Quiz[]
+  flashcards  Flashcard[]
+}
+
+model UploadedNote {
+  id            Int      @id @default(autoincrement())
+  title         String
+  fileUrl       String
+  extractedText String?
+
+  status        String   @default("PROCESSING")
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  summaries  Summary[]
+  quizzes    Quiz[]
+  flashcards Flashcard[]
+}
+
+model Summary {
+  id        Int      @id @default(autoincrement())
+  content   String?
+
+  status    String   @default("PENDING")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  noteId Int
+  note   UploadedNote @relation(fields: [noteId], references: [id])
+}
+
+model Quiz {
+  id        Int      @id @default(autoincrement())
+
+  question  String
+
+  optionA   String
+  optionB   String
+  optionC   String
+  optionD   String
+
+  correctAnswer String
+
+  status    String   @default("PENDING")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  noteId Int
+
+  user User @relation(fields: [userId], references: [id])
+
+  note UploadedNote @relation(fields: [noteId], references: [id])
+}
+
+model Flashcard {
+  id        Int      @id @default(autoincrement())
+
+  question  String
+  answer    String
+
+  status    String   @default("PENDING")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  noteId Int
+  note   UploadedNote @relation(fields: [noteId], references: [id])
+}
