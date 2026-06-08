@@ -15,7 +15,15 @@ console.log("CORRECT INDEX RUNNING");
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://academic-assistant-ai-36hj.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
@@ -35,17 +43,19 @@ app.use(
 
 app.use("/quiz", quizRoutes);
 
-
 // Global Error Middleware
 app.use(errorMiddleware);
 
 // Server
-const PORT = 5000;
+const PORT =
+  process.env.PORT || 5000;
 
 app.get("/test", (req, res) => {
   res.send("WORKING");
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(
+    `Server running on port ${PORT}`
+  );
 });
