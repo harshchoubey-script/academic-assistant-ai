@@ -17,10 +17,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://academic-assistant-ai-1.onrender.com",
-    ],
+    origin:
+      "https://academic-assistant-ai-36hj.vercel.app",
+
     credentials: true,
   })
 );
